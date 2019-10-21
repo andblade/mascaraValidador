@@ -1,21 +1,125 @@
 /*
+Script de VALIDAÇÃO e MÁSCARA de formulário
+para CNPJ, CEP. DATA, TELEFONE e CPF
 
-    Script de VALIDAÇÃO e MÁSCARA de formulário
-    para CNPJ, CEP. DATA, TELEFONE e CPF
+Site de referência: "https://fabiobmed.com.br/2012/07/16/excelente-codigo-para-mascara-e-validacao-de-cnpj-cpf-cep-data-e-telefone/"
+Publicado em 16/07/2012
 
-    Site de referência: "https://fabiobmed.com.br/2012/07/16/excelente-codigo-para-mascara-e-validacao-de-cnpj-cpf-cep-data-e-telefone/"
-    Publicado em 16/07/2012
-
-    Por Anderson Romão
-    Github: https://github.com/andblade
-
+Por Anderson Romão
+Github: https://github.com/andblade
 */
-
-
 
 /*
     MASCARA
 */
+
+
+//adiciona mascara ao CPF
+// function MascaraCPF(cpf){
+//     if(mascaraInteiro(cpf)==false){
+//         event.returnValue = false;
+//     }       
+//     return formataCampo(cpf, '000.000.000-00', event);
+// }
+
+//adiciona mascara de cnpj
+// function MascaraCNPJ(cnpj){
+//     if(mascaraInteiro(cnpj)==false){
+//         event.returnValue = false;
+//     }       
+//     return formataCampo(cnpj, '00.000.000/0000-00', event);
+// }
+
+//adiciona mascara ao RG
+// function MascaraRG(rg){
+//     if((rg)==false){
+//         event.returnValue = false;
+//     }       
+//     return formataCampo(rg, '00.000.000-0', event);
+// }
+
+// //adiciona mascara de data
+// function MascaraNascimento(nascimento){
+//     if(mascaraInteiro(nascimento)==false){
+//         event.returnValue = false;
+//     }       
+//     return formataCampo(nascimento, '00/00/0000', event);
+// }
+
+// //adiciona mascara de periodo
+// function MascaraPeriodo(periodo){
+//     if(mascaraInteiro(periodo)==false){
+//         event.returnValue = false;
+//     }       
+//     return formataCampo(periodo, '00/00/0000', event);
+// }
+
+// adiciona mascara ao telefone
+// function MascaraTelefone(tel){  
+//     if(mascaraInteiro(tel)==false){
+//         event.returnValue = false;
+//     }       
+//     return formataCampo(tel, '(00) 0000-0000', event);
+// }
+
+// //adiciona mascara ao celular
+// function MascaraCelular(cel){  
+//     if(mascaraInteiro(cel)==false){
+//         event.returnValue = false;
+//     }       
+//     return formataCampo(cel, '(00) 00000-0000', event);
+// }
+
+// //adiciona mascara de cep
+// function MascaraCep(cep){
+//     if(mascaraInteiro(cep)==false){
+//         event.returnValue = false;
+//     }       
+//     return formataCampo(cep, '00.000-000', event);
+// }
+
+// //valida numero inteiro com mascara
+// function mascaraInteiro(){
+//     if (event.keyCode < 48 || event.keyCode > 57){
+//         event.returnValue = false;
+//         return false;
+//     }
+//     return true;
+// }
+
+// //formata de forma generica os campos
+// function formataCampo(campo, Mascara, evento) { 
+//     var boleanoMascara; 
+
+//     var Digitato = evento.keyCode;
+//     exp = /\-|\.|\/|\(|\)| /g
+//     campoSoNumeros = campo.value.toString().replace( exp, "" ); 
+
+//     var posicaoCampo = 0;    
+//     var NovoValorCampo="";
+//     var TamanhoMascara = campoSoNumeros.length;; 
+
+//     if (Digitato != 8) { // backspace 
+//         for(i=0; i<= TamanhoMascara; i++) { 
+//             boleanoMascara = ((Mascara.charAt(i) == "-") || (Mascara.charAt(i) == ".") || (Mascara.charAt(i) == "/"))
+//             boleanoMascara = boleanoMascara || ((Mascara.charAt(i) == "(") || (Mascara.charAt(i) == ")") || (Mascara.charAt(i) == " "))
+//             if (boleanoMascara) {
+//                 NovoValorCampo += Mascara.charAt(i); 
+//                 TamanhoMascara++;
+//             }else{ 
+//                 NovoValorCampo += campoSoNumeros.charAt(posicaoCampo); 
+//                 posicaoCampo++; 
+//             }              
+//         }      
+//         campo.value = NovoValorCampo;
+//         return true; 
+//     }else{ 
+//         return true; 
+//     }
+// }
+
+
+
 // Mascara CPF
 $("[mask-cpf]").each(function(){
     var $this = $(this);
@@ -68,19 +172,6 @@ function maskNASCIMENTO(nascimento){
     return nascimento;
 }
 
-// Mascara Periodo
-$("[mask-periodo]").each(function(){
-    var $this = $(this);
-    $this.on("keyup",function(){
-        $this.val(maskPERIODO($this.val()))
-    })
-});
-function maskPERIODO(periodo){
-    periodo = periodo.replace(/\D/g,"");
-    periodo = periodo.replace(/(\d{2})(\d{2})(\d{4})$/,"$1/$2/$3");
-    return periodo;
-}
-
 // Mascara Telefone
 $("[mask-telefone]").each(function(){
     var $this = $(this);
@@ -122,11 +213,26 @@ function maskCEP(cep){
     return cep;
 }
 
-
-
 /*
     VALIDAÇÃO
 */ 
+
+// ##### EXEMPLO ##### //
+
+// $("[valida-celular]").blur(function(){
+//     exp = /\(\d{2}\)\ \d{5}\-\d{4}/
+//     var celular = this.value;
+//     if(!exp.test(celular)){
+//         $("#alertCelular").removeClass("d-none");
+//         // $("[valida-celular]").focus();
+//         return false;
+//     }else{
+//         $("#alertCelular").addClass("d-none");
+//         return true;
+//     }
+//     return false;
+// });
+
 // Validar CPF
 $("[valida-cpf]").blur(function(){
     var cpf = this.value;
@@ -450,15 +556,9 @@ $("[valida-nascimento]").blur(function(){
 
 // Validar data de período
 $("[valida-periodo]").blur(function(){
-    let Atual = new Date();
-    let diasMesAtual = new Date(Atual.getFullYear(), Atual.getMonth()+1, 0).getDate();
-    let mesAtual = Atual.getMonth() + 1 < 10 ? '0' + Atual.getMonth() + 1 : Atual.getMonth() + 1;
-    let anoAtual = Atual.getFullYear();
-    let minDate = anoAtual + '-' + mesAtual + '-01';
-    let maxDate = anoAtual + '-' + mesAtual + '-'+ diasMesAtual;
-    $('input').attr('min', minDate);
-    $('input').attr('max', maxDate);
-    $()
+    /*
+        ?????????????
+    */
 });
 
 // Validar telefone
