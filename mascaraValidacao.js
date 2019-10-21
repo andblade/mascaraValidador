@@ -1,9 +1,11 @@
 /*
 
     Script de VALIDAÇÃO e MÁSCARA de formulário
-    para CNPJ, CEP. DATA, TELEFONE e CPF
+    para CPF, CNPJ, RG, E-mail, Arquivo, Data de nascimento,
+    Data de período, Telefone, Celular, Seleção, Radio, CEP,
+    Endereço, Número, Bairro, Cidade, UF, Observação/Mensagem,
+    Senha e Check.
 
-    Site de referência: "https://fabiobmed.com.br/2012/07/16/excelente-codigo-para-mascara-e-validacao-de-cnpj-cpf-cep-data-e-telefone/"
     Publicado em 16/07/2012
 
     Por Anderson Romão
@@ -25,7 +27,10 @@ $("[mask-cpf]").each(function(){
 });
 function maskCPF(cpf){
     cpf = cpf.replace( /\D/g,""); //Remove tudo o que não é dígito
-    cpf = cpf.replace( /(\d{3})(\d{3})(\d{3})(\d{2})$/,"$1.$2.$3/$4");
+    cpf = cpf.replace( /^(\d{3})$/,"$1");
+    cpf = cpf.replace( /^(\d{3})(\d{3})$/,"$1.$2");
+    cpf = cpf.replace( /^(\d{3})(\d{3})(\d{3})$/,"$1.$2.$3");
+    cpf = cpf.replace( /^(\d{3})(\d{3})(\d{3})(\d{2})$/,"$1.$2.$3-$4");
     return cpf;
 }
 
@@ -38,7 +43,11 @@ $("[mask-cnpj]").each(function(){
 });
 function maskCNPJ(cnpj){
     cnpj = cnpj.replace( /\D/g,""); 
-    cnpj = cnpj.replace( /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,"$1.$2.$3/$4.$5");
+    cnpj = cnpj.replace( /^(\d{2})$/,"$1");
+    cnpj = cnpj.replace( /^(\d{2})(\d{3})$/,"$1.$2");
+    cnpj = cnpj.replace( /^(\d{2})(\d{3})(\d{3})$/,"$1.$2.$3");
+    cnpj = cnpj.replace( /^(\d{2})(\d{3})(\d{3})(\d{4})$/,"$1.$2.$3/$4");
+    cnpj = cnpj.replace( /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,"$1.$2.$3/$4-$5");
     return cnpj;
 }
 
@@ -51,8 +60,24 @@ $("[mask-rg]").each(function(){
 });
 function maskRG(rg){
     rg = rg.replace( /\D/g,"");
-    rg = rg.replace(/(\d{2})(\d{3})(\d{3})(\d{1})$/,"$1.$2.$3-$4");
+    rg = rg.replace(/^(\d{2})$/,"$1");
+    rg = rg.replace(/^(\d{2})(\d{3})$/,"$1.$2");
+    rg = rg.replace(/^(\d{2})(\d{3})(\d{3})$/,"$1.$2.$3");
+    rg = rg.replace(/^(\d{2})(\d{3})(\d{3})(\d{1})$/,"$1.$2.$3-$4");
     return rg;
+}
+
+// Mascara CPF e CNPJ
+$("[mask-cnpj-cpf]").each(function(){
+    var $this = $(this);
+    $this.on("keyup",function(){
+        $this.val(maskCPFCNPJ($this.val()))
+    })
+});
+function maskCPFCNPJ(CpfCnpj){
+    CpfCnpj = CpfCnpj.replace( /\D/g,""); 
+    CpfCnpj = CpfCnpj.replace( /(\d{18})$/,"$1");
+    return CpfCnpj;
 }
 
 // Mascara Nascimento
@@ -63,8 +88,10 @@ $("[mask-nascimento]").each(function(){
     })
 });
 function maskNASCIMENTO(nascimento){
-    nascimento = nascimento.replace(/\D/g,"");
-    nascimento = nascimento.replace(/(\d{2})(\d{2})(\d{4})$/,"$1/$2/$3");
+    nascimento = nascimento.replace( /\D/g , "");
+    nascimento = nascimento.replace(/^(\d{2})/,'$1');
+    nascimento = nascimento.replace(/^(\d{2})(\d{2})$/,'$1/$2');
+    nascimento = nascimento.replace(/^(\d{2})(\d{2})(\d{4})$/,'$1/$2/$3');   
     return nascimento;
 }
 
@@ -126,6 +153,10 @@ function maskCEP(cep){
 
 /*
     VALIDAÇÃO
+
+    Exemplos
+    // $("#teste").removeClass("d-none").html("<p class='alertStyle'>Um texto</p>");
+
 */ 
 // Validar CPF
 $("[valida-cpf]").blur(function(){
@@ -233,7 +264,7 @@ $("[valida-cnpj-cpf]").blur(function(){
     valorInput = valorInput.toString().replace( exp, "" );
 
     if (valorInput == ""){
-        $("#alertCpfCnpjInf").removeClass("d-none");
+        $("#alertCPF-CNPJ-info").removeClass("d-none");
         return (false);
     }if (((valorInput.length == 11) && (valorInput == 11111111111) ||
         (valorInput == 22222222222) || (valorInput == 33333333333) ||
@@ -242,12 +273,12 @@ $("[valida-cnpj-cpf]").blur(function(){
         (valorInput == 88888888888) || (valorInput == 99999999999) ||
         (valorInput == 00000000000))){
         
-        $("#alertCpfCnpjInv").removeClass("d-none");
+        $("#alertCPF-CNPJ-inv").removeClass("d-none");
         return (false);
     }
 
     if (!((valorInput.length == 11) || (valorInput.length == 14))){
-        $("#alertCpfCnpjInv").removeClass("d-none");
+        $("#alertCPF-CNPJ-inv").removeClass("d-none");
         return (false);
     }
 
@@ -266,7 +297,7 @@ $("[valida-cnpj-cpf]").blur(function(){
             break;
         }allNum += ch;
     }if (!allValid){
-        $("#alertCpfCnpjInf").removeClass("d-none");        
+        $("#alertCPF-CNPJ-info").removeClass("d-none");        
         return (false);
     }
 
@@ -284,7 +315,7 @@ $("[valida-cnpj-cpf]").blur(function(){
         tot += i * parseInt(checkStr.charAt(10 - i));
 
         if ((tot * 10 % 11 % 10) != parseInt(checkStr.charAt(9))){
-            $("#alertCpfCnpjInv").removeClass("d-none");
+            $("#alertCPF-CNPJ-inv").removeClass("d-none");
             return (false);
         }
       
@@ -294,11 +325,11 @@ $("[valida-cnpj-cpf]").blur(function(){
             tot += i * parseInt(checkStr.charAt(11 - i));
 
         if ((tot * 10 % 11 % 10) != parseInt(checkStr.charAt(10))){
-            $("#alertCpfCnpjInv").removeClass("d-none");
+            $("#alertCPF-CNPJ-inv").removeClass("d-none");
             return (false);
         }else{
-            $("#alertCpfCnpjInf").addClass("d-none");
-            $("#alertCpfCnpjInv").addClass("d-none");
+            $("#alertCPF-CNPJ-info").addClass("d-none");
+            $("#alertCPF-CNPJ-inv").addClass("d-none");
             return(true);
         }
     }
@@ -314,11 +345,11 @@ $("[valida-cnpj-cpf]").blur(function(){
             }
         }
         if ((tot * 10 % 11 % 10) != parseInt(checkStr.charAt(12))){
-            $("#alertCpfCnpjInv").removeClass("d-none");
+            $("#alertCPF-CNPJ-inv").removeClass("d-none");
             return (false);
         }else{
-            $("#alertCpfCnpjInf").addClass("d-none");
-            $("#alertCpfCnpjInv").addClass("d-none");
+            $("#alertCPF-CNPJ-info").addClass("d-none");
+            $("#alertCPF-CNPJ-inv").addClass("d-none");
             return(true);
         }
         
@@ -334,11 +365,11 @@ $("[valida-cnpj-cpf]").blur(function(){
         }
 
         if ((tot * 10 % 11 % 10) != parseInt(checkStr.charAt(13))){
-            $("#alertCpfCnpjInv").removeClass("d-none");
+            $("#alertCPF-CNPJ-inv").removeClass("d-none");
             return (false);
         }else{
-            $("#alertCpfCnpjInf").addClass("d-none");
-            $("#alertCpfCnpjInv").addClass("d-none");
+            $("#alertCPF-CNPJ-info").addClass("d-none");
+            $("#alertCPF-CNPJ-inv").addClass("d-none");
             return(true);
         }
     }
@@ -348,11 +379,11 @@ $("[valida-cnpj-cpf]").blur(function(){
 $("[valida-nome]").blur(function(){
     var nome = this.value;
     if (nome.length <= 3) {
-        $("#alertNome").removeClass("d-none");
+        $("#alertNOME").removeClass("d-none");
         // $("[valida-nome]").focus();
         return false;
     }else{
-        $("#alertNome").addClass("d-none");
+        $("#alertNOME").addClass("d-none");
         return true;
     }
 });
@@ -465,12 +496,11 @@ $("[valida-periodo]").blur(function(){
 $("[valida-telefone]").blur(function(){
     var telefone = this.value.replace(/\D/g, '');
     if(telefone.length < 10){
-        // $("#alertTelefone").removeClass("d-none");
-        $("#teste").removeClass("d-none").html("<p class='alertStyle'>Um texto</p>");
+        $("#alertTelefone").removeClass("d-none");
         // $("[valida-telefone]").focus();
         return false;
     }else{
-        $("#teste").addClass("d-none");
+        $("#alertTelefone").addClass("d-none");
         return true;
     }
     return false;
@@ -539,13 +569,13 @@ $("[valida-cep]").blur(function(){
             document.body.appendChild(script);
         }else {
             limpa_formulário_cep();
-            $("#alertCepNaoInf").removeClass("d-none");
+            $("#alertCEP").removeClass("d-none");
             // $("[valida-cep]").focus();
         }
     }else{
         //cep sem valor, limpa formulário.
         limpa_formulário_cep();
-        $("#alertCepNaoInf").removeClass("d-none");
+        $("#alertCEP").removeClass("d-none");
         // $("[valida-cep]").focus();
     }
     return false;
@@ -565,12 +595,11 @@ function meu_callback(conteudo) {
         $('[valida-cidade]').val(conteudo.localidade);
         $('[valida-uf]').val(conteudo.uf);
 
-        $("#alertCepNaoEnc").addClass("d-none");
-        $("#alertCepNaoInf").addClass("d-none");
+        $("#alertCEP").addClass("d-none");
     }else{
         //CEP não Encontrado.
         limpa_formulário_cep();
-        $("#alertCepNaoEnc").removeClass("d-none");
+        $("#alertCEP").removeClass("d-none");
         // $("[valida-cep]").focus();
     }
 }
@@ -694,3 +723,15 @@ $("[valida-checkbox]").blur(function(){
         }
     }
 });
+
+
+function enviar() {
+    $("[required]").each(function(){
+        if($(this).val() == "" ){
+            // alert('Existem campos que não foram preenchidos.');
+            Swal.fire('Existem campos que não foram preenchidos.');
+            return false;
+        }
+    });
+    return true;
+}

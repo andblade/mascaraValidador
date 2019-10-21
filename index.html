@@ -13,7 +13,7 @@
 		<title>Formulário com máscara e validação</title>
 
 		<style>
-			.alertStyle{
+			/*.alertStyle{
 				color: #dc3545;
 				font-style: italic;
 				font-size: 13px;
@@ -23,7 +23,7 @@
 			}
 			.swal2-popup {
 			    width: 18em;
-			}
+			}*/
 			@media (max-width: 575px){
 				.font-mb-3{
 					font-size: 28px;
@@ -44,52 +44,52 @@
 						<div class="col-12 col-md">
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
-									<label class="mb-0">CPF</label> <!-- onBlur="ValidaCPF(this);" onKeyPress="MascaraCPF(this);" -->
-									<input type="text" class="form-control" id="" name="cpf" valida-cpf mask-cpf maxlength="14" required>
+									<label class="mb-0">CPF</label>
+									<input type="text" class="form-control" id="" name="" mask-cpf valida-cpf maxlength="14" required>
 									<div id="alertCPF" class="alertStyle d-none">CPF inválido.</div>
 								</div>
 						    	<div class="form-group col-12 col-md">
 						    		<label class="mb-0">CNPJ</label>
-									<input type="text" class="form-control" id="" name="cnpj" valida-cnpj mask-cnpj maxlength="18" required>
+									<input type="text" class="form-control" id="" name="" mask-cnpj valida-cnpj maxlength="18" required>
 									<div id="alertCNPJ" class="alertStyle d-none">CNPJ inválido.</div>
 						    	</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
 									<label class="mb-0 bg-warning w-100">RG</label>
-									<input type="text" class="form-control" id="" name="" valida-rg mask-rg maxlength="12" required>
-									<div id="alertRg" class="alertStyle d-none">RG inválido. </div>
+									<input type="text" class="form-control" id="" name="" mask-rg valida-rg maxlength="12" required>
+									<div id="alertRG" class="alertStyle d-none">RG inválido.</div>
 								</div>
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">CPF ou CNPJ</label><span class="small font-italic text-truncate"> - Somente números</span>
-									<input type="text" class="form-control" id="" name="cnpj" valida-cnpj-cpf maxlength="18" required>
-									<div id="alertCpfCnpjInf" class="alertStyle d-none">Campo inválido. Favor preencher somente com dígitos o campo CPF/CNPJ.</div>
-									<div id="alertCpfCnpjInv" class="alertStyle d-none">CPF/CNPJ inválido.</div>
+									<input type="text" class="form-control" id="" name="" valida-cnpj-cpf mask-cnpj-cpf maxlength="14" required>
+									<div id="alertCPF-CNPJ-info" class="alertStyle d-none">Campo inválido. Favor preencher somente com dígitos o campo CPF/CNPJ.</div>
+									<div id="alertCPF-CNPJ-inv" class="alertStyle d-none">CPF/CNPJ inválido.</div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col">
-									<label class="mb-0">Nome completo</label> <!-- onBlur="ValidaNome(this);" -->
-									<input type="text" class="form-control" id="" name="nome" valida-nome required>
-									<div id="alertNome" class="alertStyle d-none">Nome incompleto.</div>
+									<label class="mb-0">Nome completo</label>
+									<input type="text" class="form-control" id="" name="" valida-nome required>
+									<div id="alertNOME" class="alertStyle d-none">Nome incompleto.</div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
-									<label class="mb-0">E-mail</label> <!-- onBlur="ValidaEmail(this);" -->
-									<input type="email" class="form-control" id="" name="email" valida-email required>
+									<label class="mb-0">E-mail</label>
+									<input type="email" class="form-control" id="" name="" valida-email required>
 									<div id="alertEmail" class="alertStyle d-none">E-mail inválido.</div>
 								</div>
 								<div class="form-group col-12 col-md">
-									<label class="mb-0">Confirmar e-mail</label> <!-- onBlur="ValidaConfEmail(this);" -->
-									<input type="email" id="confEmail" name="confEmail" class="form-control" valida-confEmail required>
+									<label class="mb-0">Confirmar e-mail</label>
+									<input type="email" id="confEmail" name="" class="form-control" valida-confEmail required>
 									<div id="alertConfEmail" class="alertStyle d-none">Repita o e-mail corretamente.</div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col">
 									<label class="mb-0">Enviar arquivo</label>
-									<div class="border rounded px-1 pt-1"> <!-- onBlur="ValidaArquivo(form1.arquivo);" -->
+									<div class="border rounded px-1 pt-1">
 										<input type="file" class="form-control-file" id="" name="arquivo" valida-arquivo required>
 										<div id="alertArquivo" class="alertStyle d-none">Arquivo não adicionado.</div>
 									</div>
@@ -98,26 +98,25 @@
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Data de nascimento</label>
-									<input type="text" class="form-control" id="dataNasc" name="nascimento" valida-nascimento mask-nascimento maxlength="10" required>
+									<input type="text" class="form-control" id="" name="" mask-nascimento valida-nascimento maxlength="10" required>
 									<div id="alertMenorIdade" class="alertStyle d-none">Menor de 18 anos não pode se cadastrar.</div>
 									<div id="alertDataInvalida" class="alertStyle d-none">Data de nascimento inválida.</div>
 								</div>
 								<div class="form-group col-12 col-md">
 									<label class="mb-0 bg-warning w-100">Data por período<span class="small font-italic text-truncate"> - (01/10 a 31/10)</span></label>
-									<input type="text" class="form-control" id="" name="periodo" valida-periodo mask-periodo maxlength="10" required>
+									<input type="text" class="form-control" id="" name="" mask-periodo valida-periodo maxlength="10" required>
 									<div id="alertPeriodo" class="alertStyle d-none">Data inválida para o período.</div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Telefone</label>
-									<input type="text" class="form-control" id="" name="tel" valida-telefone mask-telefone maxlength="13" required>
+									<input type="text" class="form-control" id="" name="" mask-telefone valida-telefone maxlength="13" required>
 									<div id="alertTelefone" class="alertStyle d-none">Telefone inválido.</div>
-									<div id="teste" class="d-none"></div>
 								</div>
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Celular</label>
-									<input type="text" class="form-control" id="" name="cel" valida-celular mask-celular maxlength="14" required>
+									<input type="text" class="form-control" id="" name="" mask-celular valida-celular maxlength="14" required>
 									<div id="alertCelular" class="alertStyle d-none">Celular inválido.</div>
 								</div>
 							</div>
@@ -135,7 +134,8 @@
 									<div id="alertSelecao" class="alertStyle d-none">Selecione uma opção.</div>
 								</div>
 								<div class="form-group col-12 col-md">
-									<div class="border rounded mt-4 pt-2 pb-1 px-2">
+									<label class="mb-0">Opção</label>
+									<div class="border rounded pt-2 pb-1 px-2">
 										<div class="form-check form-check-inline">
 										  	<input class="form-check-input" type="radio" name="optRadio" id="" value="opcao-01" valida-radio required>
 										  	<label class="form-check-label">Opção 01</label>
@@ -154,22 +154,21 @@
 							<div class="form-row">
 						        <div class="form-group col col-md-6">
 						            <label class="mb-0">CEP</label>
-									<input type="text" class="form-control" id="cep" name="cep" valida-cep mask-cep maxlength="9" required>
-									<div id="alertCepNaoEnc" class="alertStyle d-none">CEP não encontrado.</div>
-									<div id="alertCepNaoInf" class="alertStyle d-none">CEP não informado.</div>
+									<input type="text" class="form-control" id="" name="" mask-cep valida-cep maxlength="9" required>
+									<div id="alertCEP" class="alertStyle d-none">CEP não encontrado.</div>
 						        </div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col">
 								    <label class="mb-0">Endereço</label>
-							        <input id="rua" name="rua" type="text" class="form-control" valida-endereco required>
+							        <input type="text" id="" name="" class="form-control" valida-endereco required>
 									<div id="alertEnd" class="alertStyle d-none">Endereço não encontrado.</div>
 								</div>
 							</div>
 							<div class="form-row">
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Número</label>
-					                <input id="" name="numero" type="text" maxlength="6" class="form-control" valida-numero required>
+					                <input type="text" id="" name="" maxlength="6" class="form-control" valida-numero required>
 									<div id="alertNum" class="alertStyle d-none">Número residencial não informado.</div>
 							    </div>
 							    <div class="form-group col-12 col-md">
@@ -180,19 +179,19 @@
 							<div class="form-row">
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Bairro</label>
-					                <input id="bairro" name="bairro" type="text" class="form-control" valida-bairro required>
+					                <input type="text" id="" name="" class="form-control" valida-bairro required>
 									<div id="alertBairro" class="alertStyle d-none">Bairro não informado.</div>
 							    </div>
 							</div>
 							<div class="form-row">
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Cidade</label>
-					                <input id="cidade" name="cidade" type="text" class="form-control" valida-cidade required>
+					                <input type="text" id="" name="" class="form-control" valida-cidade required>
 									<div id="alertCidade" class="alertStyle d-none">Cidade não informada.</div>
 							    </div>
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">UF</label>
-						            <select id="uf" name="uf" class="form-control custom-select" valida-uf required>
+						            <select id="" name="" class="form-control custom-select" valida-uf required>
 						                <option value="">Selecione seu estado</option>
 						                <option value="AC">AC</option>
 						                <option value="AL">AL</option>
@@ -225,7 +224,7 @@
 									<div id="alertUF" class="alertStyle d-none">Estado não informado.</div>
 							    </div>
 							</div>
-							<hr>
+							<hr class="my-4 pb-1">
 							<div class="form-row">
 								<div class="form-group col">
 								    <label class="mb-0">Observação</label>
@@ -239,14 +238,14 @@
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Senha</label>
 						            <div class="input-group">
-						                <input id="" name="novaSenha" type="password" class="form-control" valida-senha required>
+						                <input id="" name="" type="password" class="form-control" valida-senha required>
 						            </div>
 						            <div id="alertSenha" class="alertStyle d-none">Senha não informada.</div>
 							    </div>
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Confirmar senha</label>
 						            <div class="input-group">
-						                <input id="confSenha" name="confSenha" type="password" class="form-control" valida-confsenha required>
+						                <input id="" name="" type="password" class="form-control" valida-confsenha required>
 						            </div>
 						            <div id="alerConfSenha" class="alertStyle d-none">Repita a senha corretamente.</div>
 							    </div>
@@ -260,7 +259,7 @@
 					</div>
 					<hr>
 					<div class="text-right">
-						<button type="submit" id="btnEnviar" class="btn btn-primary">Validar</button>
+						<button type="submit" id="btnEnviar" onclick="enviar();" class="btn btn-primary">Validar</button>
 					</div>
 				</form>
 			</div>
