@@ -13,17 +13,17 @@
 		<title>Formulário com máscara e validação</title>
 
 		<style>
-			/*.alertStyle{
+			/*.alertError{
 				color: #dc3545;
 				font-style: italic;
 				font-size: 13px;
-			}
+			}*/
 			.swal2-title{
 				font-size: 22px;
 			}
 			.swal2-popup {
 			    width: 18em;
-			}*/
+			}
 			@media (max-width: 575px){
 				.font-mb-3{
 					font-size: 28px;
@@ -46,52 +46,51 @@
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">CPF</label>
 									<input type="text" class="form-control" id="" name="" mask-cpf valida-cpf maxlength="14" required>
-									<div id="alertCPF" class="alertStyle d-none">CPF inválido.</div>
+									<div id="alertCPF" class="alertError"></div>
 								</div>
 						    	<div class="form-group col-12 col-md">
 						    		<label class="mb-0">CNPJ</label>
 									<input type="text" class="form-control" id="" name="" mask-cnpj valida-cnpj maxlength="18" required>
-									<div id="alertCNPJ" class="alertStyle d-none">CNPJ inválido.</div>
+									<div id="alertCNPJ" class="alertError"></div>
 						    	</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
 									<label class="mb-0 bg-warning w-100">RG</label>
 									<input type="text" class="form-control" id="" name="" mask-rg valida-rg maxlength="12" required>
-									<div id="alertRG" class="alertStyle d-none">RG inválido.</div>
+									<div id="alertRG" class="alertError d-none">RG inválido.</div>
 								</div>
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">CPF ou CNPJ</label><span class="small font-italic text-truncate"> - Somente números</span>
 									<input type="text" class="form-control" id="" name="" valida-cnpj-cpf mask-cnpj-cpf maxlength="14" required>
-									<div id="alertCPF-CNPJ-info" class="alertStyle d-none">Campo inválido. Favor preencher somente com dígitos o campo CPF/CNPJ.</div>
-									<div id="alertCPF-CNPJ-inv" class="alertStyle d-none">CPF/CNPJ inválido.</div>
+									<div id="alertCPF-CNPJ" class="alertError"></div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col">
 									<label class="mb-0">Nome completo</label>
 									<input type="text" class="form-control" id="" name="" valida-nome required>
-									<div id="alertNOME" class="alertStyle d-none">Nome incompleto.</div>
+									<div id="alertNOME" class="alertError"></div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">E-mail</label>
 									<input type="email" class="form-control" id="" name="" valida-email required>
-									<div id="alertEmail" class="alertStyle d-none">E-mail inválido.</div>
+									<div id="alertEmail" class="alertError"></div>
 								</div>
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Confirmar e-mail</label>
-									<input type="email" id="confEmail" name="" class="form-control" valida-confEmail required>
-									<div id="alertConfEmail" class="alertStyle d-none">Repita o e-mail corretamente.</div>
+									<input type="email" class="form-control" id="" name="" valida-confEmail required>
+									<div id="alertConfEmail" class="alertError"></div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col">
 									<label class="mb-0">Enviar arquivo</label>
 									<div class="border rounded px-1 pt-1">
-										<input type="file" class="form-control-file" id="" name="arquivo" valida-arquivo required>
-										<div id="alertArquivo" class="alertStyle d-none">Arquivo não adicionado.</div>
+										<input type="file" class="form-control-file" id="" name="" valida-arquivo required>
+										<div id="alertArquivo" class="alertError"></div>
 									</div>
 								</div>
 							</div>
@@ -99,31 +98,30 @@
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Data de nascimento</label>
 									<input type="text" class="form-control" id="" name="" mask-nascimento valida-nascimento maxlength="10" required>
-									<div id="alertMenorIdade" class="alertStyle d-none">Menor de 18 anos não pode se cadastrar.</div>
-									<div id="alertDataInvalida" class="alertStyle d-none">Data de nascimento inválida.</div>
+									<div id="alertNascimento" class="alertError"></div>
 								</div>
 								<div class="form-group col-12 col-md">
 									<label class="mb-0 bg-warning w-100">Data por período<span class="small font-italic text-truncate"> - (01/10 a 31/10)</span></label>
 									<input type="text" class="form-control" id="" name="" mask-periodo valida-periodo maxlength="10" required>
-									<div id="alertPeriodo" class="alertStyle d-none">Data inválida para o período.</div>
+									<div id="alertPeriodo" class="alertError d-none">Data inválida para o período.</div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Telefone</label>
 									<input type="text" class="form-control" id="" name="" mask-telefone valida-telefone maxlength="13" required>
-									<div id="alertTelefone" class="alertStyle d-none">Telefone inválido.</div>
+									<div id="alertTelefone" class="alertError"></div>
 								</div>
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Celular</label>
 									<input type="text" class="form-control" id="" name="" mask-celular valida-celular maxlength="14" required>
-									<div id="alertCelular" class="alertStyle d-none">Celular inválido.</div>
+									<div id="alertCelular" class="alertError"></div>
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Seleção</label>
-									<select name="selecao" id="" class="form-control" valida-selecao required>
+									<select name="" id="" class="form-control" valida-selecao required>
 										<option value="">Escolha uma opção</option>
 										<option value="opção 1">opção 1</option>
 										<option value="opção 2">opção 2</option>
@@ -131,7 +129,7 @@
 										<option value="opção 4">opção 4</option>
 										<option value="opção 5">opção 5</option>
 									</select>
-									<div id="alertSelecao" class="alertStyle d-none">Selecione uma opção.</div>
+									<div id="alertSelecao" class="alertError"></div>
 								</div>
 								<div class="form-group col-12 col-md">
 									<label class="mb-0">Opção</label>
@@ -145,7 +143,7 @@
 										  	<label class="form-check-label">Opção 02</label>
 										</div>
 									</div>
-									<div id="alertRadio" class="alertStyle d-none">Escolha uma opção.</div>
+									<div id="alertRadio" class="alertError"></div>
 								</div>
 							</div>
 						</div>
@@ -155,21 +153,21 @@
 						        <div class="form-group col col-md-6">
 						            <label class="mb-0">CEP</label>
 									<input type="text" class="form-control" id="" name="" mask-cep valida-cep maxlength="9" required>
-									<div id="alertCEP" class="alertStyle d-none">CEP não encontrado.</div>
+									<div id="alertCEP" class="alertError"></div>
 						        </div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col">
 								    <label class="mb-0">Endereço</label>
 							        <input type="text" id="" name="" class="form-control" valida-endereco required>
-									<div id="alertEnd" class="alertStyle d-none">Endereço não encontrado.</div>
+									<div id="alertEnd" class="alertError"></div>
 								</div>
 							</div>
 							<div class="form-row">
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Número</label>
 					                <input type="text" id="" name="" maxlength="6" class="form-control" valida-numero required>
-									<div id="alertNum" class="alertStyle d-none">Número residencial não informado.</div>
+									<div id="alertNum" class="alertError"></div>
 							    </div>
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Complemento <span class="small font-italic text-truncate">- Opcional</span></label>
@@ -180,14 +178,14 @@
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Bairro</label>
 					                <input type="text" id="" name="" class="form-control" valida-bairro required>
-									<div id="alertBairro" class="alertStyle d-none">Bairro não informado.</div>
+									<div id="alertBairro" class="alertError"></div>
 							    </div>
 							</div>
 							<div class="form-row">
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Cidade</label>
 					                <input type="text" id="" name="" class="form-control" valida-cidade required>
-									<div id="alertCidade" class="alertStyle d-none">Cidade não informada.</div>
+									<div id="alertCidade" class="alertError"></div>
 							    </div>
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">UF</label>
@@ -221,7 +219,7 @@
 						                <option value="SP">SP</option>
 						                <option value="TO">TO</option>
 						            </select>
-									<div id="alertUF" class="alertStyle d-none">Estado não informado.</div>
+									<div id="alertUF" class="alertError"></div>
 							    </div>
 							</div>
 							<hr class="my-4 pb-1">
@@ -229,9 +227,9 @@
 								<div class="form-group col">
 								    <label class="mb-0">Observação</label>
 								    <div class="input-group">
-								        <textarea id="" name="" valida-mensagem class="form-control" rows="2"></textarea>
+								        <textarea id="" name="" valida-mensagem class="form-control" rows="2" required></textarea>
 								    </div>
-								    <div id="alertMensagem" class="alertStyle d-none">Deixe sua mensagem.</div>
+								    <div id="alertMensagem" class="alertError"></div>
 								</div>
 							</div>
 							<div class="form-row">
@@ -240,20 +238,20 @@
 						            <div class="input-group">
 						                <input id="" name="" type="password" class="form-control" valida-senha required>
 						            </div>
-						            <div id="alertSenha" class="alertStyle d-none">Senha não informada.</div>
+						            <div id="alertSenha" class="alertError"></div>
 							    </div>
 							    <div class="form-group col-12 col-md">
 						            <label class="mb-0">Confirmar senha</label>
 						            <div class="input-group">
 						                <input id="" name="" type="password" class="form-control" valida-confsenha required>
 						            </div>
-						            <div id="alerConfSenha" class="alertStyle d-none">Repita a senha corretamente.</div>
+						            <div id="alerConfSenha" class="alertError"></div>
 							    </div>
 							</div>
 							<div class="form-check text-dark mb-3">
 							    <input type="checkbox" name="checkbox" id="" class="form-check-input" valida-checkbox required>
 							    <label class="form-check-label">Concordo com o <a href="#" title="Regulamento"><u>regulamento</u></a>.</label>
-								<div id="alertRegulamento" class="alertStyle d-none">Aceite o regulamento para proseguir.</div>
+								<div id="alertRegulamento" class="alertError"></div>
 							</div>
 						</div>
 					</div>
