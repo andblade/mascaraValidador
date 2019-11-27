@@ -493,15 +493,29 @@ $("[valida-nascimento]").blur(function(){
 
 // Validar data de período
 $("[valida-periodo]").blur(function(){
-    let Atual = new Date();
-    let diasMesAtual = new Date(Atual.getFullYear(), Atual.getMonth()+1, 0).getDate();
-    let mesAtual = Atual.getMonth() + 1 < 10 ? '0' + Atual.getMonth() + 1 : Atual.getMonth() + 1;
-    let anoAtual = Atual.getFullYear();
-    let minDate = anoAtual + '-' + mesAtual + '-01';
-    let maxDate = anoAtual + '-' + mesAtual + '-'+ diasMesAtual;
-    $('input').attr('min', minDate);
-    $('input').attr('max', maxDate);
-    $()
+    let dataUsuario = this.value;
+    let dataInicio = new Date('2019-10-10');
+    let dataFim = new Date('2019-10-20');
+
+    if (dataUsuario < dataInicio){
+        alert('Menor que o período');
+    } else if (dataUsuario > dataFim){
+        alert('Menor que o período');
+    } else if (dataUsuario > dataInicio && dataUsuario < dataFim) {
+        alert('Dentro do período');
+    } else {
+        alert('Data errada');
+    }
+
+    // let Atual = new Date();
+    // let diasMesAtual = new Date(Atual.getFullYear(), Atual.getMonth()+1, 0).getDate();
+    // let mesAtual = Atual.getMonth() + 1 < 10 ? '0' + Atual.getMonth() + 1 : Atual.getMonth() + 1;
+    // let anoAtual = Atual.getFullYear();
+    // let minDate = anoAtual + '-' + mesAtual + '-01';
+    // let maxDate = anoAtual + '-' + mesAtual + '-'+ diasMesAtual;
+    // $('input').attr('min', minDate);
+    // $('input').attr('max', maxDate);
+    // $()
 });
 
 // Validar telefone
