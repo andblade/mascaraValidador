@@ -165,7 +165,7 @@ $(".alertError").css({
 });
 
 // Validar CPF
-$("[valida-cpf]").blur(function(){
+$("[valida-cpf]").bind('blur keyup', function(){
     var cpf = this.value;
     cpf = cpf.replace(".", "");
     cpf = cpf.replace(".", "");
@@ -216,7 +216,7 @@ $("[valida-cpf]").blur(function(){
 });
 
 // Validar CNPJ
-$("[valida-cnpj]").blur(function(){
+$("[valida-cnpj]").bind('blur keyup', function(){
     var cnpj = this.value;
     var valida = new Array(6,5,4,3,2,9,8,7,6,5,4,3,2);
     var dig1= new Number;
@@ -261,7 +261,7 @@ $("[valida-cnpj]").blur(function(){
 
 
 // Validar RG
-$("[valida-rg]").blur(function(){
+$("[valida-rg]").bind('blur keyup', function(){
     /*
 
         ???????????/
@@ -270,7 +270,7 @@ $("[valida-rg]").blur(function(){
 });
      
 // Validar CNPJ e CPF mesmo input
-$("[valida-cnpj-cpf]").blur(function(){
+$("[valida-cnpj-cpf]").bind('blur keyup', function(){
     valorInput = this.value;
 
     exp = /\.|\-|\//g
@@ -389,7 +389,7 @@ $("[valida-cnpj-cpf]").blur(function(){
 });
 
 // Validar Nome
-$("[valida-nome]").blur(function(){
+$("[valida-nome]").bind('blur keyup', function(){
     var nome = this.value;
     if (nome.length <= 3) {
         $("#alertNOME").removeClass("d-none").html("<p class='alertError'>Nome incompleto.</p>");
@@ -402,7 +402,7 @@ $("[valida-nome]").blur(function(){
 });
 
 // Validar E-mail
-$("[valida-email]").blur(function(){
+$("[valida-email]").bind('blur keyup', function(){
     usuario = this.value.substring(0, this.value.indexOf("@"));
     dominio = this.value.substring(this.value.indexOf("@")+ 1, this.value.length);
     if ((usuario.length >=1) &&
@@ -424,7 +424,7 @@ $("[valida-email]").blur(function(){
 });
 
 // Validar confirmação de e-mail
-$("[valida-confEmail]").blur(function(){
+$("[valida-confEmail]").bind('blur keyup', function(){
     email = $("[valida-email]").val();
     confirmarEmail = this.value;
     if (confirmarEmail == false){
@@ -441,7 +441,7 @@ $("[valida-confEmail]").blur(function(){
 });
 
 // Validar envio de arquivo
-$("[valida-arquivo]").blur(function(){
+$("[valida-arquivo]").bind('blur keyup', function(){
     var arquivo = this.value;
     if (arquivo.length == 0) {
         $("#alertArquivo").removeClass("d-none").html("<p class='alertError'>Arquivo não adicionado.</p>");
@@ -454,7 +454,7 @@ $("[valida-arquivo]").blur(function(){
 });
 
 // Validar data de nascimento
-$("[valida-nascimento]").blur(function(){
+$("[valida-nascimento]").bind('blur keyup', function(){
     var data = this.value;
     data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
     var data_array = data.split("-"); // quebra a data em array
@@ -492,20 +492,20 @@ $("[valida-nascimento]").blur(function(){
 });
 
 // Validar data de período
-$("[valida-periodo]").blur(function(){
+$("[valida-periodo]").bind('blur keyup', function(){
     let dataUsuario = this.value;
     let dataInicio = new Date('2019-10-10');
     let dataFim = new Date('2019-10-20');
 
-    if (dataUsuario < dataInicio){
-        alert('Menor que o período');
-    } else if (dataUsuario > dataFim){
-        alert('Menor que o período');
-    } else if (dataUsuario > dataInicio && dataUsuario < dataFim) {
-        alert('Dentro do período');
-    } else {
-        alert('Data errada');
-    }
+    // if (dataUsuario < dataInicio){
+    //     alert('Menor que o período');
+    // } else if (dataUsuario > dataFim){
+    //     alert('Menor que o período');
+    // } else if (dataUsuario > dataInicio && dataUsuario < dataFim) {
+    //     alert('Dentro do período');
+    // } else {
+    //     alert('Data errada');
+    // }
 
     // let Atual = new Date();
     // let diasMesAtual = new Date(Atual.getFullYear(), Atual.getMonth()+1, 0).getDate();
@@ -519,7 +519,7 @@ $("[valida-periodo]").blur(function(){
 });
 
 // Validar telefone
-$("[valida-telefone]").blur(function(){
+$("[valida-telefone]").bind('blur keyup', function(){
     var telefone = this.value.replace(/\D/g, '');
     if(telefone.length < 10){
         $("#alertTelefone").removeClass("d-none").html("<p class='alertError'>Telefone inválido.</p>");
@@ -533,9 +533,9 @@ $("[valida-telefone]").blur(function(){
 });
 
 // Validar Celular
-$("[valida-celular]").blur(function(){
+$("[valida-celular]").bind('blur keyup', function(){
     var celular = this.value;
-    if(celular.length < 11){
+    if(celular.length < 13){
         $("#alertCelular").removeClass("d-none").html("<p class='alertError'>Celular inválido.</p>");
         // $("[valida-celular]").focus();
         return false;
@@ -547,7 +547,7 @@ $("[valida-celular]").blur(function(){
 });
 
 // Validar Seleção
-$("[valida-selecao]").blur(function(){
+$("[valida-selecao]").bind('blur keypress', function(){
     var opcao = this.value;
     if (opcao == ''){
         $("#alertSelecao").removeClass("d-none").html("<p class='alertError'>Selecione uma opção.</p>");
@@ -561,7 +561,7 @@ $("[valida-selecao]").blur(function(){
 });
 
 // Validar opção radio
-$("[valida-radio]").blur(function(){
+$("[valida-radio]").bind('blur keypress', function(){
     if($('input[valida-radio]:checked').length < 1){
         $("#alertRadio").removeClass("d-none").html("<p class='alertError'>Escolha uma opção.</p>");
         // $("[valida-radio]").focus();
@@ -574,7 +574,7 @@ $("[valida-radio]").blur(function(){
 });
 
 // Validar CEP
-$("[valida-cep]").blur(function(){
+$("[valida-cep]").bind('blur keyup', function(){
     //Nova variável "cep" somente com dígitos.
     var cep = this.value.replace(/\D/g, '');
     if (cep != "") {
@@ -631,7 +631,7 @@ function meu_callback(conteudo) {
 }
 
 // Validar endereço
-$("[valida-endereco]").blur(function(){
+$("[valida-endereco]").bind('blur keyup', function(){
     var endereco = this.value;
     if (endereco == '') {
         $("#alertEnd").removeClass("d-none").html("<p class='alertError'>Endereço não encontrado.</p>");
@@ -644,7 +644,7 @@ $("[valida-endereco]").blur(function(){
 });
 
 // Validar número residencial
-$("[valida-numero]").blur(function(){
+$("[valida-numero]").bind('blur keyup', function(){
     var numero = this.value;
     if (numero == '') {
         $("#alertNum").removeClass("d-none").html("<p class='alertError'>Número não informado.</p>");
@@ -657,7 +657,7 @@ $("[valida-numero]").blur(function(){
 });
 
 // Validar bairro
-$("[valida-bairro]").blur(function(){
+$("[valida-bairro]").bind('blur keyup', function(){
     var bairro = this.value;
     if (bairro == '') {
         $("#alertBairro").removeClass("d-none").html("<p class='alertError'>Bairro não informado.</p>");
@@ -670,7 +670,7 @@ $("[valida-bairro]").blur(function(){
 });
 
 // Validar cidade
-$("[valida-cidade]").blur(function(){
+$("[valida-cidade]").bind('blur keyup', function(){
     var cidade = this.value;
     if (cidade == '') {
         $("#alertCidade").removeClass("d-none").html("<p class='alertError'>Cidade não informada.</p>");
@@ -683,7 +683,7 @@ $("[valida-cidade]").blur(function(){
 });
 
 // Validar UF
-$("[valida-uf]").blur(function(){
+$("[valida-uf]").bind('blur keyup', function(){
     var uf = this.value;
     if (uf == '') {
         $("#alertUF").removeClass("d-none").html("<p class='alertError'>Estado não informado.</p>");
@@ -696,7 +696,7 @@ $("[valida-uf]").blur(function(){
 });
 
 // Validar mensagem / observação
-$("[valida-mensagem]").blur(function(){
+$("[valida-mensagem]").bind('blur keyup', function(){
     var mensagem = this.value;
     if (mensagem.length <= 3) {
         $("#alertMensagem").removeClass("d-none").html("<p class='alertError'>Deixe sua mensagem.</p>");
@@ -709,7 +709,7 @@ $("[valida-mensagem]").blur(function(){
 });
 
 // Validar senha
-$("[valida-senha]").blur(function(){
+$("[valida-senha]").bind('blur keyup', function(){
     var senha = this.value;
     if (senha.length <= 2) {
         $("#alertSenha").removeClass("d-none").html("<p class='alertError'>Senha não informada.</p>");
@@ -722,7 +722,7 @@ $("[valida-senha]").blur(function(){
 });
 
 // Validar comparação de senha
-$("[valida-confsenha]").blur(function(){
+$("[valida-confsenha]").bind('blur keyup', function(){
     senha = $("[valida-senha]").val();
     confirmarSenha = this.value;
     if (senha != confirmarSenha){
@@ -736,14 +736,15 @@ $("[valida-confsenha]").blur(function(){
 });
 
 // Validar checkbox
-$("[valida-checkbox]").blur(function(){
+$("[valida-checkbox]").bind('blur keyup', function(){
     var checkOk = document.getElementsByName("checkbox");
     for (var i = 0; i < checkOk.length; i++) {
-        if(checkOk[i].checked == true){
-            $("#alertRegulamento").addClass("d-none").html("<p class='alertError'>Aceite o regulamento para proseguir.</p>");
+        if(checkOk[i].checked == false){
+            $("#alertRegulamento").removeClass("d-none").html("<p class='alertError'>Aceite o regulamento para proseguir.</p>");
             // console.log('Aceito o regulamento');
+            // alert("Aceite antes");
         }else{
-            $("#alertRegulamento").removeClass("d-none");
+            $("#alertRegulamento").addClass("d-none");
             // $("[valida-checkbox]").focus();
             return false;
         }
