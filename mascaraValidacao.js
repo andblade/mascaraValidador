@@ -68,17 +68,17 @@ function maskRG(rg){
 }
 
 // Mascara CPF e CNPJ
-$("[mask-cnpj-cpf]").each(function(){
-    var $this = $(this);
-    $this.on("keyup",function(){
-        $this.val(maskCPFCNPJ($this.val()))
-    })
+var CpfCnpjMaskBehavior = function (val) {
+    return val.replace(/\D/g, '').length <= 11 ? '000.000.000-009' : '00.000.000/0000-00';
+},
+cpfCnpjpOptions = {
+    onKeyPress: function(val, e, field, options) {
+        field.mask(CpfCnpjMaskBehavior.apply({}, arguments), options);
+    }
+};
+$(function() {
+    $("[mask-cnpj-cpf]").mask(CpfCnpjMaskBehavior, cpfCnpjpOptions);
 });
-function maskCPFCNPJ(CpfCnpj){
-    CpfCnpj = CpfCnpj.replace( /\D/g,""); 
-    CpfCnpj = CpfCnpj.replace( /(\d{18})$/,"$1");
-    return CpfCnpj;
-}
 
 // Mascara Nascimento
 $("[mask-nascimento]").each(function(){
