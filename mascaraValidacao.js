@@ -17,10 +17,11 @@
 
 /******* MASCARA *******/
 
+
 // Mascara CPF
-    $("[mask-cpf]").each(function(){
+    $('[mask-cpf]').each(function(){
         var $this = $(this);
-        $this.on("keyup",function(){
+        $this.on('keyup',function(){
             $this.val(maskCPF($this.val()))
         })
     });
@@ -34,9 +35,9 @@
     }
 
 // Mascara CNPJ
-    $("[mask-cnpj]").each(function(){
+    $('[mask-cnpj]').each(function(){
         var $this = $(this);
-        $this.on("keyup",function(){
+        $this.on('keyup',function(){
             $this.val(maskCNPJ($this.val()))
         })
     });
@@ -51,9 +52,9 @@
     }
 
 // Mascara RG
-    $("[mask-rg]").each(function(){
+    $('[mask-rg]').each(function(){
         var $this = $(this);
-        $this.on("keyup",function(){
+        $this.on('keyup',function(){
             $this.val(maskRG($this.val()))
         })
     });
@@ -76,13 +77,13 @@
         }
     };
     $(function() {
-        $("[mask-cnpj-cpf]").mask(CpfCnpjMaskBehavior, cpfCnpjpOptions);
+        $('[mask-cnpj-cpf]').mask(CpfCnpjMaskBehavior, cpfCnpjpOptions);
     });
 
 // Mascara Nascimento
-    $("[mask-nascimento]").each(function(){
+    $('[mask-nascimento]').each(function(){
         var $this = $(this);
-        $this.on("keyup",function(){
+        $this.on('keyup',function(){
             $this.val(maskNASCIMENTO($this.val()))
         })
     });
@@ -95,9 +96,9 @@
     }
 
 // Mascara Periodo
-    $("[mask-periodo]").each(function(){
+    $('[mask-periodo]').each(function(){
         var $this = $(this);
-        $this.on("keyup",function(){
+        $this.on('keyup',function(){
             $this.val(maskPERIODO($this.val()))
         })
     });
@@ -108,9 +109,9 @@
     }
 
 // Mascara Telefone
-    $("[mask-telefone]").each(function(){
+    $('[mask-telefone]').each(function(){
         var $this = $(this);
-        $this.on("keyup",function(){
+        $this.on('keyup',function(){
             $this.val(maskTELEFONE($this.val()))
         })
     });
@@ -122,9 +123,9 @@
     }
 
 // Mascara Celular
-    $("[mask-celular]").each(function(){
+    $('[mask-celular]').each(function(){
         var $this = $(this);
-        $this.on("keyup",function(){
+        $this.on('keyup',function(){
             $this.val(maskCELULAR($this.val()))
         })
     });
@@ -136,9 +137,9 @@
     }
 
 // Mascara CEP
-    $("[mask-cep]").each(function(){
+    $('[mask-cep]').each(function(){
         var $this = $(this);
-        $this.on("keyup",function(){
+        $this.on('keyup',function(){
             $this.val(maskCEP($this.val()))
         })
     });
@@ -151,6 +152,7 @@
 
 /******* VALIDAÇÃO *******/
 
+
 // CSS - Alerta de Erro
     $('.alertError').css({
         'font-style': 'italic',
@@ -161,22 +163,22 @@
 // Validar CPF
     $('[valida-cpf]').bind('blur keyup', function(){
         var cpf = this.value;
-        cpf = cpf.replace(".", "");
-        cpf = cpf.replace(".", "");
-        cpf = cpf.replace("-", "");
+        cpf = cpf.replace('.', '');
+        cpf = cpf.replace('.', '');
+        cpf = cpf.replace('-', '');
 
         if( cpf.length != 11 ||
-            cpf == "00000000000" ||
-            cpf == "11111111111" ||
-            cpf == "22222222222" ||
-            cpf == "33333333333" ||
-            cpf == "44444444444" ||
-            cpf == "55555555555" ||
-            cpf == "66666666666" ||
-            cpf == "77777777777" ||
-            cpf == "88888888888" ||
-            cpf == "99999999999" ){
-            $("#alertCPF").removeClass("d-none").html("<p class='alertError'>CPF inválido.</p>");
+            cpf == '00000000000' ||
+            cpf == '11111111111' ||
+            cpf == '22222222222' ||
+            cpf == '33333333333' ||
+            cpf == '44444444444' ||
+            cpf == '55555555555' ||
+            cpf == '66666666666' ||
+            cpf == '77777777777' ||
+            cpf == '88888888888' ||
+            cpf == '99999999999' ){
+            $('#alertCPF').removeClass('d-none').html('<p class="alertError">CPF inválido.</p>');
             return false;
         }
         soma = 0;
@@ -188,7 +190,7 @@
             resto = 0;
         }
         if(resto != parseInt(cpf.charAt(9))){
-            $("#alertCPF").removeClass("d-none").html("<p class='alertError'>CPF inválido.</p>");
+            $('#alertCPF').removeClass('d-none').html('<p class="alertError">CPF inválido.</p>');
             return false;
         }
         soma = 0;
@@ -200,17 +202,17 @@
             resto = 0;
         }   
         if(resto != parseInt(cpf.charAt(10))){
-            $("#alertCPF").removeClass("d-none").html("<p class='alertError'>CPF inválido.</p>");
+            $('#alertCPF').removeClass('d-none').html('<p class="alertError">CPF inválido.</p>');
             return false;
         }else{
-            $("#alertCPF").addClass("d-none");
+            $('#alertCPF').addClass('d-none');
             return true;
         }
         return true;
     });
 
 // Validar CNPJ
-    $("[valida-cnpj]").bind('blur keyup', function(){
+    $('[valida-cnpj]').bind('blur keyup', function(){
         var cnpj = this.value;
         var valida = new Array(6,5,4,3,2,9,8,7,6,5,4,3,2);
         var dig1= new Number;
@@ -219,17 +221,17 @@
         exp = /\.|\-|\//g
         cnpj = cnpj.toString().replace( exp, "" );
         
-        if (cnpj == "00000000000000" ||
-            cnpj == "11111111111111" || 
-            cnpj == "22222222222222" || 
-            cnpj == "33333333333333" || 
-            cnpj == "44444444444444" || 
-            cnpj == "55555555555555" || 
-            cnpj == "66666666666666" || 
-            cnpj == "77777777777777" || 
-            cnpj == "88888888888888" || 
-            cnpj == "99999999999999"){
-            $("#alertCNPJ").removeClass("d-none").html("<p class='alertError'>CNPJ inválido.</p>");
+        if (cnpj == '00000000000000' ||
+            cnpj == '11111111111111' || 
+            cnpj == '22222222222222' || 
+            cnpj == '33333333333333' || 
+            cnpj == '44444444444444' || 
+            cnpj == '55555555555555' || 
+            cnpj == '66666666666666' || 
+            cnpj == '77777777777777' || 
+            cnpj == '88888888888888' || 
+            cnpj == '99999999999999'){
+            $('#alertCNPJ').removeClass('d-none').html('<p class="alertError">CNPJ inválido.</p>');
             return false;
         }
 
@@ -243,21 +245,20 @@
         dig2 = (((dig2%11)<2)? 0:(11-(dig2%11)));
 
         if(((dig1*10)+dig2) != digito){
-            $("#alertCNPJ").removeClass("d-none").html("<p class='alertError'>CNPJ inválido.</p>");
-            // $("#alertCNPJ").removeClass("d-none");
+            $('#alertCNPJ').removeClass('d-none').html('<p class="alertError">CNPJ inválido.</p>');
             return false;
         }else{
-            $("#alertCNPJ").addClass("d-none");
+            $('#alertCNPJ').addClass('d-none');
             return true;
         }
     });
 
 // Validar RG
-    $("[valida-rg]").bind('blur keyup', function(numero){
+    $('[valida-rg]').bind('blur keyup', function(numero){
         var numero = $(this).val();
-        numero = numero.replace(".", "");
-        numero = numero.replace(".", "");
-        numero = numero.replace("-", "");
+        numero = numero.replace('.', '');
+        numero = numero.replace('.', '');
+        numero = numero.replace('-', '');
               
         tamanho = numero.length;
         vetor = new Array(tamanho);
@@ -294,14 +295,14 @@
     });
      
 // Validar CNPJ e CPF mesmo input
-    $("[valida-cnpj-cpf]").bind('blur keyup', function(){
+    $('[valida-cnpj-cpf]').bind('blur keyup', function(){
         valorInput = this.value;
 
         exp = /\.|\-|\//g
         valorInput = valorInput.toString().replace( exp, "" );
 
-        if (valorInput == ""){
-            $("#alertCPF-CNPJ").removeClass("d-none").html("<p class='alertError'>Campo inválido. Favor preencher somente números o campo CPF/CNPJ.</p>");
+        if (valorInput == ''){
+            $('#alertCPF-CNPJ').removeClass('d-none').html('<p class="alertError">Campo inválido. Favor preencher somente números o campo CPF/CNPJ.</p>');
             return (false);
         }if (((valorInput.length == 11) && (valorInput == 11111111111) ||
             (valorInput == 22222222222) || (valorInput == 33333333333) ||
@@ -309,18 +310,18 @@
             (valorInput == 66666666666) || (valorInput == 77777777777) ||
             (valorInput == 88888888888) || (valorInput == 99999999999) ||
             (valorInput == 00000000000))){
-            $("#alertCPF-CNPJ").removeClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+            $('#alertCPF-CNPJ').removeClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
             return (false);
         }
         if (!((valorInput.length == 11) || (valorInput.length == 14))){
-            $("#alertCPF-CNPJ").removeClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+            $('#alertCPF-CNPJ').removeClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
             return (false);
         }
 
-        var checkOK = "0123456789";
+        var checkOK = '0123456789';
         var checkStr = valorInput;
         var allValid = true;
-        var allNum = "";
+        var allNum = '';
         
         for (i = 0;  i < checkStr.length;  i++){
             ch = checkStr.charAt(i);
@@ -332,14 +333,14 @@
                 break;
             }allNum += ch;
         }if (!allValid){
-            $("#alertCPF-CNPJ").removeClass("d-none").html("<p class='alertError'>Campo inválido. Favor preencher somente números o campo CPF/CNPJ.</p>");
+            $('#alertCPF-CNPJ').removeClass('d-none').html('<p class="alertError">Campo inválido. Favor preencher somente números o campo CPF/CNPJ.</p>');
             return (false);
         }
 
         var chkVal = allNum;
         var prsVal = parseFloat(allNum);
-        if (chkVal != "" && !(prsVal > "0")){
-            alert("CPF zerado !");
+        if (chkVal != '' && !(prsVal > '0')){
+            alert('CPF zerado !');
             return (false);
         }
 
@@ -349,7 +350,7 @@
             tot += i * parseInt(checkStr.charAt(10 - i));
 
             if ((tot * 10 % 11 % 10) != parseInt(checkStr.charAt(9))){
-                $("#alertCPF-CNPJ").removeClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+                $('#alertCPF-CNPJ').removeClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
                 return (false);
             }
           
@@ -358,11 +359,10 @@
                 tot += i * parseInt(checkStr.charAt(11 - i));
 
             if ((tot * 10 % 11 % 10) != parseInt(checkStr.charAt(10))){
-                $("#alertCPF-CNPJ").removeClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+                $('#alertCPF-CNPJ').removeClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
                 return (false);
             }else{
-                // $("#alertCPF-CNPJ").addClass("d-none").html("<p class='alertError'>Campo inválido. Favor preencher somente números o campo CPF/CNPJ.</p>");
-                $("#alertCPF-CNPJ").addClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+                $('#alertCPF-CNPJ').addClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
                 return(true);
             }
         }
@@ -378,11 +378,10 @@
                 }
             }
             if ((tot * 10 % 11 % 10) != parseInt(checkStr.charAt(12))){
-                $("#alertCPF-CNPJ").removeClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+                $('#alertCPF-CNPJ').removeClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
                 return (false);
             }else{
-                // $("#alertCPF-CNPJ").addClass("d-none").html("<p class='alertError'>Campo inválido. Favor preencher somente números o campo CPF/CNPJ.</p>");
-                $("#alertCPF-CNPJ").addClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+                $('#alertCPF-CNPJ').addClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
                 return(true);
             }
             
@@ -397,87 +396,86 @@
             }
 
             if ((tot * 10 % 11 % 10) != parseInt(checkStr.charAt(13))){
-                $("#alertCPF-CNPJ").removeClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+                $('#alertCPF-CNPJ').removeClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
                 return (false);
             }else{
-                // $("#alertCPF-CNPJ").addClass("d-none").html("<p class='alertError'>Campo inválido. Favor preencher somente números o campo CPF/CNPJ.</p>");
-                $("#alertCPF-CNPJ").addClass("d-none").html("<p class='alertError'>CPF/CNPJ inválido.</p>");
+                $('#alertCPF-CNPJ').addClass('d-none').html('<p class="alertError">CPF/CNPJ inválido.</p>');
                 return(true);
             }
         }
     });
 
 // Validar Nome
-    $("[valida-nome]").bind('blur keyup', function(){
+    $('[valida-nome]').bind('blur keyup', function(){
         if ($(this).val().length <= 3) {
-            $("#alertNOME").removeClass("d-none").html("<p class='alertError'>Nome incompleto.</p>");
+            $('#alertNOME').removeClass('d-none').html('<p class="alertError">Nome incompleto.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertNOME").addClass("d-none");
+            $('#alertNOME').addClass('d-none');
             return true;
         }
     });
 
 // Validar E-mail
-    $("[valida-email]").bind('blur keyup', function(){
-        usuario = this.value.substring(0, this.value.indexOf("@"));
-        dominio = this.value.substring(this.value.indexOf("@")+ 1, this.value.length);
+    $('[valida-email]').bind('blur keyup', function(){
+        usuario = this.value.substring(0, this.value.indexOf('@'));
+        dominio = this.value.substring(this.value.indexOf('@')+ 1, this.value.length);
         if ((usuario.length >=1) &&
             (dominio.length >=3) && 
-            (usuario.search("@")==-1) && 
-            (dominio.search("@")==-1) &&
-            (usuario.search(" ")==-1) && 
-            (dominio.search(" ")==-1) &&
-            (dominio.search(".")!=-1) &&      
-            (dominio.indexOf(".") >=1)&& 
-            (dominio.lastIndexOf(".") < dominio.length - 1)) {
-            $("#alertEmail").addClass("d-none");
+            (usuario.search('@')==-1) && 
+            (dominio.search('@')==-1) &&
+            (usuario.search(' ')==-1) && 
+            (dominio.search(' ')==-1) &&
+            (dominio.search('.')!=-1) &&      
+            (dominio.indexOf('.') >=1)&& 
+            (dominio.lastIndexOf('.') < dominio.length - 1)) {
+            $('#alertEmail').addClass('d-none');
             return true;
         }else{
-            $("#alertEmail").removeClass("d-none").html("<p class='alertError'>E-mail inválido.</p>");
+            $('#alertEmail').removeClass('d-none').html('<p class="alertError">E-mail inválido.</p>');
             // $(this).focus();
             return false;
         }
     });
 
 // Validar confirmação de e-mail
-    $("[valida-confEmail]").bind('blur keyup', function(){
-        email = $("[valida-email]").val();
+    $('[valida-confEmail]').bind('blur keyup', function(){
+        email = $('[valida-email]').val();
         if ($(this).val() == false){
-            $("#alertConfEmail").removeClass("d-none").html("<p class='alertError'>Repita o e-mail corretamente.</p>");
+            $('#alertConfEmail').removeClass('d-none').html('<p class="alertError">Repita o e-mail corretamente.</p>');
             // $(this).focus();
             return false;
         }else if (email != $(this).val()){
-            $("#alertConfEmail").removeClass("d-none").html("<p class='alertError'>Repita o e-mail corretamente.</p>");
+            $('#alertConfEmail').removeClass('d-none').html('<p class="alertError">Repita o e-mail corretamente.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertConfEmail").addClass("d-none");
+            $('#alertConfEmail').addClass('d-none');
         }
     });
 
 // Validar envio de arquivo
-    $("[valida-arquivo]").bind('blur keyup', function(){
+    $('[valida-arquivo]').bind('blur keyup', function(){
         if ($(this).val().length == 0) {
-            $("#alertArquivo").removeClass("d-none").html("<p class='alertError'>Arquivo não adicionado.</p>");
+            $('#alertArquivo').removeClass('d-none').html('<p class="alertError">Arquivo não adicionado.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertArquivo").addClass("d-none");
+            $('#alertArquivo').addClass('d-none');
             return true;
         }
     });
 
 // Validar data de nascimento
-    $("[valida-nascimento]").bind('blur keyup', function(){
+    $('[valida-nascimento]').bind('blur keyup', function(){
         var data = this.value;
-        data = data.replace(/\//g, "-"); // substitui eventuais barras (ex. IE) "/" por hífen "-"
-        var data_array = data.split("-"); // quebra a data em array
+        data = data.replace(/\//g, '-'); // substitui eventuais barras (ex. IE) "/" por hífen "-"
+        var data_array = data.split('-'); // quebra a data em array
 
         // para o IE onde será inserido no formato dd/MM/yyyy
         if(data_array[0].length != 4){
-          data = data_array[2]+"-"+data_array[1]+"-"+data_array[0]; // remonta a data no formato yyyy/MM/dd
+          data = data_array[2]+'-'+data_array[1]+'-'+data_array[0]; // remonta a data no formato yyyy/MM/dd
         }
 
         // comparo as datas e calculo a idade
@@ -488,19 +486,19 @@
         if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
 
         if(idade >= 0 && idade < 18){
-            $("#alertNascimento").removeClass("d-none").html("<p class='alertError'>Menor de 18 anos não pode se cadastrar.</p>");
+            $('#alertNascimento').removeClass('d-none').html('<p class="alertError">Menor de 18 anos não pode se cadastrar.</p>');
             // $(this).focus();
             return false;
         }else if (idade >= 18 && idade <= 90) {
-            $("#alertNascimento").addClass("d-none");
+            $('#alertNascimento').addClass('d-none');
             // console.log('Maior de 18 anos!');
             return true;
         }else if (idade < 0) {
-            $("#alertNascimento").removeClass("d-none").html("<p class='alertError'>Data de nascimento inválida.</p>");
+            $('#alertNascimento').removeClass('d-none').html('<p class="alertError">Data de nascimento inválida.</p>');
             // $(this).focus();
             return false;  
         }else{
-            $("#alertNascimento").removeClass("d-none").html("<p class='alertError'>Data de nascimento inválida.</p>");
+            $('#alertNascimento').removeClass('d-none').html('<p class="alertError">Data de nascimento inválida.</p>');
             // $(this).focus();
             return false;  
         }
@@ -527,71 +525,71 @@
     });
 
 // Validar telefone
-    $("[valida-telefone]").bind('blur keyup', function(){
+    $('[valida-telefone]').bind('blur keyup', function(){
         if($(this).val().length < 10){
-            $("#alertTelefone").removeClass("d-none").html("<p class='alertError'>Telefone inválido.</p>");
+            $('#alertTelefone').removeClass('d-none').html('<p class="alertError">Telefone inválido.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertTelefone").addClass("d-none");
+            $('#alertTelefone').addClass('d-none');
             return true;
         }
         return false;
     });
 
 // Validar Celular
-    $("[valida-celular]").bind('blur keyup', function(){
+    $('[valida-celular]').bind('blur keyup', function(){
         if($(this).val().length < 13){
-            $("#alertCelular").removeClass("d-none").html("<p class='alertError'>Celular inválido.</p>");
+            $('#alertCelular').removeClass('d-none').html('<p class="alertError">Celular inválido.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertCelular").addClass("d-none");
+            $('#alertCelular').addClass('d-none');
             return true;
         }
         return false;
     });
 
 // Validar Seleção
-    $("[valida-selecao]").bind('blur keypress', function(){
+    $('[valida-selecao]').bind('blur keypress', function(){
         if ($(this).val() == ''){
-            $("#alertSelecao").removeClass("d-none").html("<p class='alertError'>Selecione uma opção.</p>");
+            $('#alertSelecao').removeClass('d-none').html('<p class="alertError">Selecione uma opção.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertSelecao").addClass("d-none");
+            $('#alertSelecao').addClass('d-none');
             // console.log('Opção escolhida:<br>' + opcao);
             return true;
         }
     });
 
 // Validar opção radio
-    $("[valida-radio]").bind('blur keypress', function(){
+    $('[valida-radio]').bind('blur keypress', function(){
         if($('input[valida-radio]:checked').length < 1){
-            $("#alertRadio").removeClass("d-none").html("<p class='alertError'>Escolha uma opção.</p>");
+            $('#alertRadio').removeClass('d-none').html('<p class="alertError">Escolha uma opção.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertRadio").addClass("d-none");
+            $('#alertRadio').addClass('d-none');
             // console.log('Opção escolhida:<br>' + radio.value);    
         }
         return false;
     });
 
 // Validar CEP
-    $("[valida-cep]").bind('blur keyup', function(){
+    $('[valida-cep]').bind('blur keyup', function(){
         //Nova variável "cep" somente com dígitos.
         var cep = this.value.replace(/\D/g, '');
-        if (cep != "") {
+        if (cep != '') {
             //Expressão regular para validar o CEP.
             var validacep = /^[0-9]{8}$/;
             //Valida o formato do CEP.
             if(validacep.test(cep)) {
                 //Preenche os campos com "carregando..." enquanto consulta webservice.
-                $('[valida-endereco]').val("carregando...");
-                $('[valida-bairro]').val("carregando...");
-                $('[valida-cidade]').val("carregando...");
-                $('[valida-uf]').val("carregando...");
+                $('[valida-endereco]').val('carregando...');
+                $('[valida-bairro]').val('carregando...');
+                $('[valida-cidade]').val('carregando...');
+                $('[valida-uf]').val('carregando...');
                 //Cria um elemento javascript.
                 var script = document.createElement('script');
                 //Sincroniza com o callback.
@@ -600,146 +598,146 @@
                 document.body.appendChild(script);
             }else {
                 limpa_formulário_cep();
-                $("#alertCEP").removeClass("d-none").html("<p class='alertError'>CEP não encontrado.</p>");
+                $('#alertCEP').removeClass('d-none').html('<p class="alertError">CEP não encontrado.</p>');
                 // $(this).focus();
             }
         }else{
             //cep sem valor, limpa formulário.
             limpa_formulário_cep();
-            $("#alertCEP").removeClass("d-none").html("<p class='alertError'>CEP não encontrado.</p>");
+            $('#alertCEP').removeClass('d-none').html('<p class="alertError">CEP não encontrado.</p>');
             // $(this).focus();
         }
         return false;
     });
     function limpa_formulário_cep(){
         //Limpa valores do formulário de cep.
-        $('[valida-endereco]').val("");
-        $('[valida-bairro]').val("");
-        $('[valida-cidade]').val("");
-        $('[valida-uf]').val("");
+        $('[valida-endereco]').val('');
+        $('[valida-bairro]').val('');
+        $('[valida-cidade]').val('');
+        $('[valida-uf]').val('');
     }
     function meu_callback(conteudo) {
-        if (!("erro" in conteudo)) {
+        if (!('erro' in conteudo)) {
             //Atualiza os campos com os valores.
             $('[valida-endereco]').val(conteudo.logradouro);
             $('[valida-bairro]').val(conteudo.bairro);
             $('[valida-cidade]').val(conteudo.localidade);
             $('[valida-uf]').val(conteudo.uf);
 
-            $("#alertCEP").addClass("d-none");
+            $('#alertCEP').addClass('d-none');
         }else{
             //CEP não Encontrado.
             limpa_formulário_cep();
-            $("#alertCEP").removeClass("d-none").html("<p class='alertError'>CEP não encontrado.</p>");
+            $('#alertCEP').removeClass('d-none').html('<p class="alertError">CEP não encontrado.</p>');
             // $(this).focus();
         }
     }
 
 // Validar endereço
-    $("[valida-endereco]").bind('blur keyup', function(){
+    $('[valida-endereco]').bind('blur keyup', function(){
         if ($(this).val() == '') {
-            $("#alertEnd").removeClass("d-none").html("<p class='alertError'>Endereço não encontrado.</p>");
+            $('#alertEnd').removeClass('d-none').html('<p class="alertError">Endereço não encontrado.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertEnd").addClass("d-none");
+            $('#alertEnd').addClass('d-none');
             return true;
         }
     });
 
 // Validar número residencial
-    $("[valida-numero]").bind('blur keyup', function(){
+    $('[valida-numero]').bind('blur keyup', function(){
         if ($(this).val() == '') {
-            $("#alertNum").removeClass("d-none").html("<p class='alertError'>Número não informado.</p>");
+            $('#alertNum').removeClass('d-none').html('<p class="alertError">Número não informado.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertNum").addClass("d-none");
+            $('#alertNum').addClass('d-none');
             return true;
         }
     });
 
 // Validar bairro
-    $("[valida-bairro]").bind('blur keyup', function(){
+    $('[valida-bairro]').bind('blur keyup', function(){
         if ($(this).val() == '') {
-            $("#alertBairro").removeClass("d-none").html("<p class='alertError'>Bairro não informado.</p>");
+            $('#alertBairro').removeClass('d-none').html('<p class="alertError">Bairro não informado.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertBairro").addClass("d-none");
+            $('#alertBairro').addClass('d-none');
             return true;
         }
     });
 
 // Validar cidade
-    $("[valida-cidade]").bind('blur keyup', function(){
+    $('[valida-cidade]').bind('blur keyup', function(){
         if ($(this).val() == '') {
-            $("#alertCidade").removeClass("d-none").html("<p class='alertError'>Cidade não informada.</p>");
+            $('#alertCidade').removeClass('d-none').html('<p class="alertError">Cidade não informada.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertCidade").addClass("d-none");
+            $('#alertCidade').addClass('d-none');
             return true;
         }
     });
 
 // Validar UF
-    $("[valida-uf]").bind('blur keyup', function(){
+    $('[valida-uf]').bind('blur keyup', function(){
         if ($(this).val() == '') {
-            $("#alertUF").removeClass("d-none").html("<p class='alertError'>Estado não informado.</p>");
+            $('#alertUF').removeClass('d-none').html('<p class="alertError">Estado não informado.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertUF").addClass("d-none");
+            $('#alertUF').addClass('d-none');
             return true;
         }
     });
 
 // Validar mensagem / observação
-    $("[valida-mensagem]").bind('blur keyup', function(){
+    $('[valida-mensagem]').bind('blur keyup', function(){
         if ($(this).val().length <= 3) {
-            $("#alertMensagem").removeClass("d-none").html("<p class='alertError'>Deixe sua mensagem.</p>");
+            $('#alertMensagem').removeClass('d-none').html('<p class="alertError">Deixe sua mensagem.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alertMensagem").addClass("d-none");
+            $('#alertMensagem').addClass('d-none');
             return true;
         }
     });
 
 // Validar senha
-    $("[valida-senha]").bind('blur keyup', function(){
+    $('[valida-senha]').bind('blur keyup', function(){
         if ($(this).val().length <= 2) {
-            $("#alertSenha").removeClass("d-none").html("<p class='alertError'>Senha não informada.</p>");
+            $('#alertSenha').removeClass('d-none').html('<p class="alertError">Senha não informada.</p>');
             // $(this).focus();
             return false;
         } else {
-            $("#alertSenha").addClass("d-none");
+            $('#alertSenha').addClass('d-none');
             return true;
         }
     });
 
 // Validar comparação de senha
-    $("[valida-confsenha]").bind('blur keyup', function(){
-        senha = $("[valida-senha]").val();
+    $('[valida-confsenha]').bind('blur keyup', function(){
+        senha = $('[valida-senha]').val();
         if ($(this).val() != senha){
-            $("#alerConfSenha").removeClass("d-none").html("<p class='alertError'>Repita a senha corretamente.</p>");
+            $('#alerConfSenha').removeClass('d-none').html('<p class="alertError">Repita a senha corretamente.</p>');
             // $(this).focus();
             return false;
         }else{
-            $("#alerConfSenha").addClass("d-none");
+            $('#alerConfSenha').addClass('d-none');
             return true;
         }
     });
 
 // Validar Força de senha
-    $("[valida-forca-senha]").bind('blur keyup', function(){
+    $('[valida-forca-senha]').bind('blur keyup', function(){
         var number = /([0-9])/;
         var alphabets = /([a-zA-Z])/;
         var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
 
         if ($(this).val() == '') {
-            $("#alertForcaSenha").html("<p class=''>Senha não informada.</p>");
+            $('#alertForcaSenha').html('<span>Senha não informada.</span>');
             // $(this).focus();
         } else if ($(this).val().length < 6) {
             $('#alertForcaSenha').html('<span class="alert alert-danger py-1">Senha fraca (deve ter pelo menos 6 caracteres.)</span>').fadeIn();
@@ -755,14 +753,14 @@
 
 // Validar checkbox
     $('[valida-checkbox]').bind('blur keyup', function(){
-        var checkOk = document.getElementsByName("checkbox");
+        var checkOk = document.getElementsByName('checkbox');
         for (var i = 0; i < checkOk.length; i++) {
             if(checkOk[i].checked == false){
-                $("#alertRegulamento").removeClass("d-none").html("<p class='alertError'>Aceite o regulamento para proseguir.</p>");
+                $('#alertRegulamento').removeClass('d-none').html('<p class="alertError">Aceite o regulamento para proseguir.</p>');
                 // console.log('Aceito o regulamento');
-                $(this).focus();
+                // $(this).focus();
             }else{
-                $("#alertRegulamento").addClass("d-none");
+                $('#alertRegulamento').addClass('d-none');
                 return false;
             }
         }
@@ -770,8 +768,8 @@
 
 $('#btnEnviar').bind('click', function(event) {
     event.preventDefault();
-    $("[required]").each(function(){
-        if($(this).val() == ""){
+    $('[required]').each(function(){
+        if($(this).val() == ''){
             Swal.fire('Existem campos que não foram preenchidos.');
             return false;
         }else{
