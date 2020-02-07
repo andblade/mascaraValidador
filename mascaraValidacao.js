@@ -8,6 +8,9 @@
 */
 
 
+/******* MÁSCARA DO CAMPO "[mask-cnpj-cpf]" *******/
+document.write('<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" type="text/javascript"></script>');
+
 
 /******* MASCARA *******/
 
