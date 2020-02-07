@@ -1,13 +1,7 @@
 /*
 
     Script de VALIDAÇÃO e MÁSCARA de formulário
-    para CPF, CNPJ, RG, E-mail, Arquivo, Data de nascimento,
-    Data de período, Telefone, Celular, Seleção, Radio, CEP,
-    Endereço, Número, Bairro, Cidade, UF, Observação/Mensagem,
-    Senha e Check.
-
     Publicado em 20/09/2019
-
     Por Anderson Romão
     Github: https://github.com/andblade
 
